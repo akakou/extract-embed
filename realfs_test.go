@@ -8,17 +8,17 @@ import (
 )
 
 func TestSaveFile(t *testing.T) {
-	err := saveFile("tmp.txt", []byte("Hello"), "./target")
+	err := saveFile("tmp.txt", []byte("Hello"), "./tmp/save-file")
 	assert.NoError(t, err)
 
-	a, err := os.ReadFile("./target/tmp.txt")
+	a, err := os.ReadFile("./tmp/save-file/tmp.txt")
 	assert.NoError(t, err)
 
 	assert.Equal(t, "Hello", string(a))
 
-	err = os.Remove("./target/tmp.txt")
+	err = os.Remove("./tmp/save-file/tmp.txt")
 	assert.NoError(t, err)
 
-	err = os.Remove("./target")
+	err = os.Remove("./tmp/save-file")
 	assert.NoError(t, err)
 }
