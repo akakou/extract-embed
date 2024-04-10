@@ -2,17 +2,7 @@ package extractembed
 
 import (
 	"embed"
-	"os"
 )
-
-func ExtractTemp(embedFs *embed.FS) (string, error) {
-	dname, err := os.MkdirTemp("", "sampledir")
-	if err != nil {
-		return "", err
-	}
-
-	return dname, Extract(dname, embedFs)
-}
 
 func Extract(base string, embedFs *embed.FS) error {
 	embedFilePaths, err := listEmbedFiles(".", embedFs)
