@@ -31,4 +31,12 @@ tmp/test-extract/test1/a.txt
 `
 
 	assert.Equal(t, excepted, string(output))
+
+	_, err = exec.Command("rm", "-rf", "tmp/test-extract").Output()
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	assert.NoError(t, err)
+
 }
